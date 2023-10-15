@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/voiceLine2.ogg-fe7160dd00292c3f0eaf8054b3ca87af.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/voiceLine2.ogg"
+dest_files=[ "res://.import/voiceLine2.ogg-fe7160dd00292c3f0eaf8054b3ca87af.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,1393 @@
+[gd_scene load_steps=62 format=2]
+
+[ext_resource path="res://scenes/things/cop_car.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/things/brick_building.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/things/industrial_building.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/parking_lot.png" type="Texture" id=4]
+[ext_resource path="res://kloppenheim_07_puresky_1k.hdr" type="Texture" id=5]
+[ext_resource path="res://assets/3d/nature/exports/trees/pine_tree.glb" type="PackedScene" id=6]
+[ext_resource path="res://scenes/things/player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/fonts/Helvetica-Bold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://scenes/things/my_car.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/fonts/Helvetica.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://scripts/world.gd" type="Script" id=11]
+[ext_resource path="res://assets/audio/nightSound.ogg" type="AudioStream" id=12]
+[ext_resource path="res://assets/2d/fence.png" type="Texture" id=13]
+[ext_resource path="res://assets/3d/buildings/exports/SideWalkCorner.glb" type="PackedScene" id=14]
+[ext_resource path="res://assets/3d/buildings/exports/SideWalk.glb" type="PackedScene" id=15]
+[ext_resource path="res://assets/2d/Grass 9 - 128x128.png" type="Texture" id=16]
+[ext_resource path="res://assets/2d/skyline.png" type="Texture" id=17]
+[ext_resource path="res://assets/2d/Grass 10 - 128x128.png" type="Texture" id=18]
+[ext_resource path="res://scenes/things/rock.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/3d/buildings/exports/Road.glb" type="PackedScene" id=20]
+[ext_resource path="res://assets/audio/voiceLine1.ogg" type="AudioStream" id=21]
+[ext_resource path="res://assets/audio/Exhilarate.mp3" type="AudioStream" id=22]
+[ext_resource path="res://assets/3d/psx_cars/Car 05/Car5_Police.obj" type="ArrayMesh" id=23]
+[ext_resource path="res://scripts/interactables/fence.gd" type="Script" id=24]
+[ext_resource path="res://assets/audio/police-siren.ogg" type="AudioStream" id=25]
+[ext_resource path="res://assets/audio/nature.ogg" type="AudioStream" id=26]
+[ext_resource path="res://assets/2d/smoke.png" type="Texture" id=27]
+[ext_resource path="res://assets/audio/tires.ogg" type="AudioStream" id=28]
+[ext_resource path="res://assets/audio/voiceLine2.ogg" type="AudioStream" id=29]
+
+[sub_resource type="PanoramaSky" id=4]
+panorama = ExtResource( 5 )
+
+[sub_resource type="Environment" id=1]
+background_mode = 2
+background_sky = SubResource( 4 )
+ambient_light_color = Color( 0.533333, 0.533333, 0.533333, 1 )
+ambient_light_sky_contribution = 0.26
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 250, 1, 250 )
+
+[sub_resource type="PlaneMesh" id=2]
+size = Vector2( 70, 55 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 4 )
+uv1_scale = Vector3( 0.015, 1, 0.025 )
+uv1_offset = Vector3( 0.5, 0, 0 )
+uv1_triplanar = true
+
+[sub_resource type="DynamicFont" id=34]
+size = 18
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 10 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "fadeIn"
+tracks/0/type = "value"
+tracks/0/path = NodePath("fadeInColor:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1.27456, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "start"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 15 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Vector3( 18.4107, 1.69559, -2.39974 ), Vector3( 17.7459, 2.04413, 1.52921 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sub_control/subtitles:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3, 2.8, 4.3, 6.3, 9.9, 11.3, 12.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "What the fuck! God damnit!", "FUCK!", "All I did was go grab some takeout,", "why the fuck are you giving me a fucking parking ticket?", "God damnit!", "Fuck!", "Fuck this, I'm not taking this anymore." ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sub_control/subtitles:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3, 15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("main_men_anim/voiceover")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 21 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Shader" id=9]
+code = "shader_type canvas_item;
+
+uniform float vignette_intensity = 0.4;
+uniform float vignette_opacity : hint_range(0.0, 1.0) = 0.5;
+uniform vec4 vignette_rgb : hint_color = vec4(0.0, 0.0, 0.0, 1.0);
+
+float vignette(vec2 uv){
+	uv *= 1.0 - uv.xy;
+	float vignette = uv.x * uv.y * 15.0;
+	return pow(vignette, vignette_intensity * vignette_opacity);
+}
+
+void fragment(){
+	vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV);
+	vec4 text = texture(TEXTURE, UV);
+	
+	text.rgba *= (vignette_rgb.rgba);
+	text.rgba *= (1.0 - vignette(UV));
+	
+	COLOR = vec4((text.rgb)*color.rgb,text.a);
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = SubResource( 9 )
+shader_param/vignette_intensity = 0.4
+shader_param/vignette_opacity = 0.5
+shader_param/vignette_rgb = Color( 0, 0, 0, 1 )
+
+[sub_resource type="QuadMesh" id=12]
+size = Vector2( 64, 4 )
+
+[sub_resource type="SpatialMaterial" id=13]
+flags_transparent = true
+params_cull_mode = 2
+albedo_texture = ExtResource( 13 )
+uv1_scale = Vector3( 0.25, 0.25, 1 )
+uv1_offset = Vector3( 0, 0.5, 0 )
+uv1_triplanar = true
+
+[sub_resource type="BoxShape" id=14]
+extents = Vector3( 32, 2, 0.1 )
+
+[sub_resource type="CubeMesh" id=15]
+size = Vector3( 10, 0.1, 66 )
+
+[sub_resource type="SpatialMaterial" id=16]
+albedo_texture = ExtResource( 16 )
+uv1_scale = Vector3( 0.1, 0.1, 0.1 )
+uv1_triplanar = true
+
+[sub_resource type="BoxShape" id=17]
+extents = Vector3( 5, 0.1, 33 )
+
+[sub_resource type="PlaneMesh" id=18]
+size = Vector2( 1000, 1000 )
+
+[sub_resource type="SpatialMaterial" id=19]
+albedo_texture = ExtResource( 18 )
+uv1_scale = Vector3( 0.1, 1, 0.1 )
+uv1_triplanar = true
+
+[sub_resource type="QuadMesh" id=20]
+size = Vector2( 300, 100 )
+
+[sub_resource type="SpatialMaterial" id=21]
+flags_transparent = true
+albedo_texture = ExtResource( 17 )
+uv1_scale = Vector3( 0.01, 0.01, 0.1 )
+uv1_offset = Vector3( 0, 0.5, 0 )
+uv1_triplanar = true
+
+[sub_resource type="BoxShape" id=25]
+extents = Vector3( 150, 50, 1 )
+
+[sub_resource type="BoxShape" id=26]
+extents = Vector3( 1.2, 1, 3 )
+
+[sub_resource type="SpatialMaterial" id=29]
+flags_transparent = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 27 )
+
+[sub_resource type="QuadMesh" id=30]
+material = SubResource( 29 )
+
+[sub_resource type="Curve" id=31]
+_data = [ Vector2( 0.0217391, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.910628, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Animation" id=28]
+resource_name = "New Anim"
+length = 7.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("copCarDonuts:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 6, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 142.329, 0, 95.4594 ), Vector3( 46.8701, 0, -9.53674e-07 ), Vector3( 30.6066, 0, 6.36396 ), Vector3( 20, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("copCarDonuts:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4, 5, 6, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -135, 0 ), Vector3( 0, -135, 0 ), Vector3( 0, -60, 0 ), Vector3( 0, -135, 0 ), Vector3( 0, -90, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("copCarDonuts/siren:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("copCarDonuts/tireSound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 6 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "donuts"
+length = 6.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 10, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -45, 0 ), Vector3( 0, -765, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("copCarDonuts/tireSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=32]
+resource_name = "fadeOut"
+length = 50.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("endText:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2.5, 17.5, 32.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ "With the city now leveled and returned to nature, Matthew escaped to a Canadian commune to smoke weed and never be heard from again.", "The parking ticket was left forever unpaid", "the end" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("endText:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3, 4, 16, 17, 18.5, 19.5, 30.5, 31.5, 33.5, 34.5, 46, 47 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("fadeOutColor:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=33]
+use_filter = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="Animation" id=35]
+resource_name = "pigsRaining"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("sub_control/subtitles:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Holy fuck, it's raining pigs." ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sub_control/subtitles:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3, 2.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("main_men_anim/voiceover")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 29 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=36]
+resource_name = "start"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 15 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Vector3( 18.4107, 1.69559, -2.39974 ), Vector3( 17.7459, 2.04413, 1.52921 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sub_control/subtitles:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3, 2.8, 4.3, 6.3, 9.9, 11.3, 12.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "What the fuck! God damnit!", "FUCK!", "All I did was go grab some takeout,", "why the fuck are you giving me a fucking parking ticket?", "God damnit!", "Fuck!", "Fuck this, I'm not taking this anymore." ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sub_control/subtitles:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3, 15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("main_men_anim/voiceover")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 21 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[node name="world" type="Spatial"]
+script = ExtResource( 11 )
+
+[node name="cops" type="Spatial" parent="."]
+
+[node name="cop_car" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -18 )
+
+[node name="cop_car2" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -18 )
+
+[node name="cop_car3" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -18 )
+
+[node name="cop_car4" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -18 )
+
+[node name="cop_car5" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -18 )
+
+[node name="cop_car6" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -18 )
+
+[node name="cop_car7" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -18 )
+
+[node name="cop_car8" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -18 )
+
+[node name="cop_car9" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -18 )
+
+[node name="cop_car10" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, -18 )
+
+[node name="cop_car11" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, -18 )
+
+[node name="cop_car12" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, -18 )
+
+[node name="cop_car13" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, -18 )
+
+[node name="cop_car14" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 19 )
+
+[node name="cop_car15" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 19 )
+
+[node name="cop_car16" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 19 )
+
+[node name="cop_car17" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 19 )
+
+[node name="cop_car18" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 19 )
+
+[node name="cop_car19" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 19 )
+
+[node name="cop_car20" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 19 )
+
+[node name="cop_car21" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 19 )
+
+[node name="cop_car22" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 19 )
+
+[node name="cop_car23" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 19 )
+
+[node name="cop_car24" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 19 )
+
+[node name="cop_car25" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, 19 )
+
+[node name="cop_car26" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, 19 )
+
+[node name="cop_car27" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 35, 0, 27 )
+
+[node name="cop_car28" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 31, 0, 27 )
+
+[node name="cop_car29" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 27, 0, 27 )
+
+[node name="cop_car30" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 23, 0, 27 )
+
+[node name="cop_car31" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19, 0, 27 )
+
+[node name="cop_car32" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 15, 0, 27 )
+
+[node name="cop_car33" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 11, 0, 27 )
+
+[node name="cop_car34" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7, 0, 27 )
+
+[node name="cop_car35" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, 0, 27 )
+
+[node name="cop_car36" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, 27 )
+
+[node name="cop_car37" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 0, 27 )
+
+[node name="cop_car38" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9, 0, 27 )
+
+[node name="cop_car39" parent="cops" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13, 0, 27 )
+
+[node name="buildings" type="Spatial" parent="."]
+
+[node name="brick_building" parent="buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 14 )
+
+[node name="industrial_building" parent="buildings" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 3 )
+
+[node name="brick_building2" parent="buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -8 )
+
+[node name="industrial_building2" parent="buildings" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -19 )
+
+[node name="brick_building3" parent="buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -30 )
+
+[node name="industrial_building3" parent="buildings" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -30 )
+
+[node name="brick_building4" parent="buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30 )
+
+[node name="industrial_building4" parent="buildings" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -30 )
+
+[node name="brick_building5" parent="buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -30 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="lot" type="StaticBody" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.5575, 9.53674e-07, -0.194811 )
+
+[node name="CollisionShape" type="CollisionShape" parent="lot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+shape = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="lot"]
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 3 )
+
+[node name="pine_tree" parent="." instance=ExtResource( 6 )]
+transform = Transform( 2.51341, 0, 0, 0, 2.51341, 0, 0, 0, 2.51341, -20.2546, 0, 28.7138 )
+
+[node name="pine_tree2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 2.51341, 0, 0, 0, 2.51341, 0, 0, 0, 2.51341, 30.7225, 0, -27.5627 )
+
+[node name="player" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6173, 1.50002, 6.5168 )
+
+[node name="my_car" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7773, 7.15256e-07, -4.27385 )
+
+[node name="main_menu_camera" type="Camera" parent="."]
+transform = Transform( 0.985254, 0.0407233, -0.166183, -0.0264638, 0.995845, 0.0871362, 0.169041, -0.0814534, 0.982238, 18.4107, 1.69559, -2.39974 )
+current = true
+far = 8192.0
+
+[node name="main_menu" type="CanvasLayer" parent="main_menu_camera"]
+
+[node name="main_menu_control" type="Control" parent="main_menu_camera/main_menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="title" type="Label" parent="main_menu_camera/main_menu/main_menu_control"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 88.0
+margin_bottom = 79.0
+custom_fonts/font = SubResource( 34 )
+text = "Parking
+Ticket
+Mayhem"
+
+[node name="start_button" type="Button" parent="main_menu_camera/main_menu/main_menu_control"]
+margin_left = 16.0
+margin_top = 104.0
+margin_right = 64.0
+margin_bottom = 128.0
+mouse_default_cursor_shape = 2
+custom_fonts/font = SubResource( 6 )
+text = "start"
+
+[node name="fadeInColor" type="ColorRect" parent="main_menu_camera/main_menu/main_menu_control"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="fadeIn" type="AnimationPlayer" parent="main_menu_camera/main_menu/main_menu_control"]
+autoplay = "fadeIn"
+anims/fadeIn = SubResource( 8 )
+
+[node name="HSlider" type="HSlider" parent="main_menu_camera/main_menu/main_menu_control"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -32.0
+margin_right = -192.0
+margin_bottom = -16.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+scrollable = false
+
+[node name="HSlider2" type="HSlider" parent="main_menu_camera/main_menu/main_menu_control"]
+margin_left = 8.0
+margin_top = 184.0
+margin_right = 126.0
+margin_bottom = 206.0
+hint_tooltip = "lowest is best for external mouse.
+highest is best for trackpad."
+min_value = 0.002
+max_value = 0.01
+step = 0.001
+value = 0.002
+scrollable = false
+
+[node name="Label" type="Label" parent="main_menu_camera/main_menu/main_menu_control"]
+margin_left = 8.0
+margin_top = 168.0
+margin_right = 126.0
+margin_bottom = 182.0
+text = "mouse sensitivity:"
+
+[node name="Label2" type="Label" parent="main_menu_camera/main_menu/main_menu_control"]
+margin_left = 8.0
+margin_top = 208.0
+margin_right = 60.0
+margin_bottom = 222.0
+text = "volume:"
+
+[node name="CheckBox" type="CheckBox" parent="main_menu_camera/main_menu/main_menu_control"]
+margin_left = 168.0
+margin_top = 208.0
+margin_right = 192.0
+margin_bottom = 232.0
+hint_tooltip = "cuts playtime in half"
+
+[node name="Label3" type="Label" parent="main_menu_camera/main_menu/main_menu_control"]
+margin_left = 192.0
+margin_top = 208.0
+margin_right = 301.0
+margin_bottom = 232.0
+text = "time saver mode"
+valign = 1
+
+[node name="subs" type="CanvasLayer" parent="main_menu_camera"]
+
+[node name="sub_control" type="Control" parent="main_menu_camera/subs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="subtitles" type="Label" parent="main_menu_camera/subs/sub_control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+margin_right = -15.0
+margin_bottom = -15.0
+text = "What the fuck! God damnit!"
+align = 1
+valign = 2
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="main_men_anim" type="AnimationPlayer" parent="main_menu_camera/subs"]
+anims/start = SubResource( 7 )
+
+[node name="voiceover" type="AudioStreamPlayer" parent="main_menu_camera/subs/main_men_anim"]
+stream = ExtResource( 21 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+autoplay = true
+
+[node name="effects" type="CanvasLayer" parent="."]
+
+[node name="ui" type="Control" parent="effects"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="effects/ui"]
+material = SubResource( 10 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="fence" type="StaticBody" parent="." groups=["fence"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 34 )
+script = ExtResource( 24 )
+
+[node name="MeshInstance" type="MeshInstance" parent="fence"]
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
+
+[node name="CollisionShape" type="CollisionShape" parent="fence"]
+shape = SubResource( 14 )
+
+[node name="fence2" type="StaticBody" parent="." groups=["fence"]]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26.9, 1, 2 )
+script = ExtResource( 24 )
+
+[node name="MeshInstance" type="MeshInstance" parent="fence2"]
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
+
+[node name="CollisionShape" type="CollisionShape" parent="fence2"]
+shape = SubResource( 14 )
+
+[node name="fence3" type="StaticBody" parent="." groups=["fence"]]
+transform = Transform( -1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 5, 1, -35 )
+script = ExtResource( 24 )
+
+[node name="MeshInstance" type="MeshInstance" parent="fence3"]
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
+
+[node name="CollisionShape" type="CollisionShape" parent="fence3"]
+shape = SubResource( 14 )
+
+[node name="fence4" type="StaticBody" parent="." groups=["fence"]]
+transform = Transform( 1.94707e-07, 0, 1, 0, 1, 0, -1, 0, 1.94707e-07, 37, 1, -3 )
+script = ExtResource( 24 )
+
+[node name="MeshInstance" type="MeshInstance" parent="fence4"]
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
+
+[node name="CollisionShape" type="CollisionShape" parent="fence4"]
+shape = SubResource( 14 )
+
+[node name="sidwalks1" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1, 14 )
+
+[node name="SideWalk-2" parent="sidwalks1" instance=ExtResource( 15 )]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -3, -1, 19 )
+
+[node name="SideWalk-1" parent="sidwalks1" instance=ExtResource( 15 )]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -3, -1, 11 )
+
+[node name="SideWalk" parent="sidwalks1" instance=ExtResource( 15 )]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -3, -1, 3 )
+
+[node name="SideWalk2" parent="sidwalks1" instance=ExtResource( 15 )]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -3, -1, -5 )
+
+[node name="SideWalk3" parent="sidwalks1" instance=ExtResource( 15 )]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -3, -1, -13 )
+
+[node name="SideWalk4" parent="sidwalks1" instance=ExtResource( 15 )]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -3, -1, -21 )
+
+[node name="SideWalk5" parent="sidwalks1" instance=ExtResource( 15 )]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -3, -1, -29 )
+
+[node name="SideWalkCorner" parent="sidwalks1" instance=ExtResource( 14 )]
+transform = Transform( -2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -1, -1, -37 )
+
+[node name="sidewalks2" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17, 0, -21 )
+
+[node name="SideWalk7" parent="sidewalks2" instance=ExtResource( 15 )]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -4, 0, -10 )
+
+[node name="SideWalk8" parent="sidewalks2" instance=ExtResource( 15 )]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -4, 0, -2 )
+
+[node name="SideWalk9" parent="sidewalks2" instance=ExtResource( 15 )]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -4, 0, -18 )
+
+[node name="SideWalk10" parent="sidewalks2" instance=ExtResource( 15 )]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -4, 0, -26 )
+
+[node name="SideWalk11" parent="sidewalks2" instance=ExtResource( 15 )]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -4, 0, -34 )
+
+[node name="SideWalk12" parent="sidewalks2" instance=ExtResource( 15 )]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -4, 0, -42 )
+
+[node name="grass1" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.9, 0, 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="grass1"]
+mesh = SubResource( 15 )
+material/0 = SubResource( 16 )
+
+[node name="CollisionShape" type="CollisionShape" parent="grass1"]
+shape = SubResource( 17 )
+
+[node name="grass2" type="StaticBody" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17, 0, -30 )
+
+[node name="MeshInstance" type="MeshInstance" parent="grass2"]
+mesh = SubResource( 15 )
+material/0 = SubResource( 16 )
+
+[node name="CollisionShape" type="CollisionShape" parent="grass2"]
+shape = SubResource( 17 )
+
+[node name="grass_floor" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
+mesh = SubResource( 18 )
+material/0 = SubResource( 19 )
+
+[node name="skyline_wall1" type="MeshInstance" parent="."]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 50, 150 )
+mesh = SubResource( 20 )
+material/0 = SubResource( 21 )
+
+[node name="skyline_wall2" type="MeshInstance" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 150, 50, 0 )
+mesh = SubResource( 20 )
+material/0 = SubResource( 21 )
+
+[node name="skyline_wall3" type="MeshInstance" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -150, 50, 0 )
+mesh = SubResource( 20 )
+material/0 = SubResource( 21 )
+
+[node name="skyline_wall4" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, -150 )
+mesh = SubResource( 20 )
+material/0 = SubResource( 21 )
+
+[node name="roads" type="Spatial" parent="."]
+
+[node name="Road" parent="roads" instance=ExtResource( 20 )]
+transform = Transform( -1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 44, 0, -22 )
+
+[node name="Road2" parent="roads" instance=ExtResource( 20 )]
+transform = Transform( -1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 44, 0, -10 )
+
+[node name="Road3" parent="roads" instance=ExtResource( 20 )]
+transform = Transform( -1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 44, 0, 2 )
+
+[node name="Road4" parent="roads" instance=ExtResource( 20 )]
+transform = Transform( -1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 44, 0, 14 )
+
+[node name="Road5" parent="roads" instance=ExtResource( 20 )]
+transform = Transform( -1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 44, 0, 26 )
+
+[node name="Road6" parent="roads" instance=ExtResource( 20 )]
+transform = Transform( -1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 44, 0, 38 )
+
+[node name="Road7" parent="roads" instance=ExtResource( 20 )]
+transform = Transform( -1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 44, 0, 50 )
+
+[node name="Road8" parent="roads" instance=ExtResource( 20 )]
+transform = Transform( -1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 44, 0, 62 )
+
+[node name="Road9" parent="roads" instance=ExtResource( 20 )]
+transform = Transform( -1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 44, 0, 74 )
+
+[node name="Road10" parent="roads" instance=ExtResource( 20 )]
+transform = Transform( -1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 44, 0, 86 )
+
+[node name="Road11" parent="roads" instance=ExtResource( 20 )]
+transform = Transform( -1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 44, 0, 98 )
+
+[node name="Road12" parent="roads" instance=ExtResource( 20 )]
+transform = Transform( -1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 44, 0, 110 )
+
+[node name="Road13" parent="roads" instance=ExtResource( 20 )]
+transform = Transform( -1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 44, 0, 122 )
+
+[node name="Road14" parent="roads" instance=ExtResource( 20 )]
+transform = Transform( -1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 44, 0, 134 )
+
+[node name="Road15" parent="roads" instance=ExtResource( 20 )]
+transform = Transform( -1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 44, 0, 146 )
+
+[node name="rock" parent="roads" instance=ExtResource( 19 )]
+transform = Transform( 3, 0, 1.06581e-14, 0, 3, 0, -1.06581e-14, 0, 3, 43, 0, -29 )
+
+[node name="invis_wall" type="StaticBody" parent="."]
+
+[node name="CollisionShape2" type="CollisionShape" parent="invis_wall"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45, 150 )
+shape = SubResource( 25 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="invis_wall"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 150, 45, 0 )
+shape = SubResource( 25 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="invis_wall"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45, -150 )
+shape = SubResource( 25 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="invis_wall"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -150, 45, 0 )
+shape = SubResource( 25 )
+
+[node name="invis_wall2" type="StaticBody" parent="."]
+transform = Transform( 0.3, 0, 0, 0, 1, 0, 0, 0, 0.3, 10, 0, 6 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2" type="CollisionShape" parent="invis_wall2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45, 150 )
+shape = SubResource( 25 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="invis_wall2"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 150, 45, 0 )
+shape = SubResource( 25 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="invis_wall2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45, -150 )
+shape = SubResource( 25 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="invis_wall2"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -150, 45, 0 )
+shape = SubResource( 25 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="invis_wall2"]
+transform = Transform( 1.91069e-15, 3.33333, 4.37114e-08, 1.31134e-08, -4.37114e-08, 0.3, 1, 0, -4.37114e-08, 10, 86, 0 )
+shape = SubResource( 25 )
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
+volume_db = -4.2
+
+[node name="copSpawner" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 50, -2 )
+
+[node name="pivot" type="Spatial" parent="."]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 10, 0, 0 )
+
+[node name="copCarDonuts" type="KinematicBody" parent="pivot"]
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 142.329, 0, 95.4594 )
+
+[node name="Car5_Police" type="MeshInstance" parent="pivot/copCarDonuts"]
+mesh = ExtResource( 23 )
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape" type="CollisionShape" parent="pivot/copCarDonuts"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 26 )
+
+[node name="siren" type="AudioStreamPlayer3D" parent="pivot/copCarDonuts"]
+stream = ExtResource( 25 )
+unit_db = 20.0
+
+[node name="tireSound" type="AudioStreamPlayer3D" parent="pivot/copCarDonuts"]
+stream = ExtResource( 28 )
+unit_size = 11.7
+pitch_scale = 0.84
+
+[node name="hitParts" type="CPUParticles" parent="pivot/copCarDonuts"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.14214, 0, -1.85786 )
+amount = 12
+mesh = SubResource( 30 )
+spread = 15.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 10.0
+scale_amount_curve = SubResource( 31 )
+
+[node name="hitParts2" type="CPUParticles" parent="pivot/copCarDonuts"]
+transform = Transform( -4.37114e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.37114e-08, -1.15786, 0, -1.85786 )
+amount = 12
+mesh = SubResource( 30 )
+spread = 15.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 10.0
+scale_amount_curve = SubResource( 31 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pivot"]
+"anims/New Anim" = SubResource( 28 )
+anims/donuts = SubResource( 27 )
+
+[node name="buildings2" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.9, 0 )
+
+[node name="industrial_building" parent="buildings2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 6.9, -19 )
+
+[node name="brick_building" parent="buildings2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 7, -30 )
+
+[node name="industrial_building2" parent="buildings2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 6.9, 3 )
+
+[node name="brick_building2" parent="buildings2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 7, -8 )
+
+[node name="industrial_building3" parent="buildings2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 6.9, 25 )
+
+[node name="brick_building3" parent="buildings2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 7, 14 )
+
+[node name="industrial_building4" parent="buildings2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 6.9, 47 )
+
+[node name="brick_building4" parent="buildings2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 7, 36 )
+
+[node name="industrial_building5" parent="buildings2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 6.9, 69 )
+
+[node name="brick_building5" parent="buildings2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 7, 58 )
+
+[node name="industrial_building6" parent="buildings2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 6.9, 91 )
+
+[node name="brick_building6" parent="buildings2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 7, 80 )
+
+[node name="industrial_building7" parent="buildings2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 6.9, 113 )
+
+[node name="brick_building7" parent="buildings2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 7, 102 )
+
+[node name="industrial_building8" parent="buildings2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 6.9, 135 )
+
+[node name="brick_building8" parent="buildings2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 7, 124 )
+
+[node name="industrial_building9" parent="buildings2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 6.9, 52 )
+
+[node name="brick_building9" parent="buildings2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 7, 41 )
+
+[node name="industrial_building10" parent="buildings2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 6.9, 74 )
+
+[node name="brick_building10" parent="buildings2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 7, 63 )
+
+[node name="industrial_building11" parent="buildings2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 6.9, 96 )
+
+[node name="brick_building11" parent="buildings2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 7, 85 )
+
+[node name="industrial_building12" parent="buildings2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 6.9, 118 )
+
+[node name="brick_building12" parent="buildings2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 7, 107 )
+
+[node name="industrial_building13" parent="buildings2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 6.9, 140 )
+
+[node name="brick_building13" parent="buildings2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 7, 129 )
+
+[node name="forest" type="Spatial" parent="."]
+
+[node name="pine_tree" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 20, 0, 38 )
+
+[node name="pine_tree2" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 9, 0, 40 )
+
+[node name="pine_tree3" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 1, 0, 38 )
+
+[node name="pine_tree4" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 16, 0, 45 )
+
+[node name="pine_tree5" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 6, 0, 52 )
+
+[node name="pine_tree6" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -6, 0, 47 )
+
+[node name="pine_tree7" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -15, 0, 38 )
+
+[node name="pine_tree8" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -20, 0, 49 )
+
+[node name="pine_tree9" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -34, 0, 40 )
+
+[node name="pine_tree10" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -15, 0, 59 )
+
+[node name="pine_tree11" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -2, 0, 65 )
+
+[node name="pine_tree12" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 17, 0, 62 )
+
+[node name="pine_tree13" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 8, 0, 84 )
+
+[node name="pine_tree14" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -11, 0, 84 )
+
+[node name="pine_tree15" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -29, 0, 73 )
+
+[node name="pine_tree16" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -42, 0, 59 )
+
+[node name="pine_tree17" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -15, 0, 70 )
+
+[node name="pine_tree18" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 8, 0, 69 )
+
+[node name="pine_tree19" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 19, 0, 91 )
+
+[node name="pine_tree20" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -3, 0, 102 )
+
+[node name="pine_tree21" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -30, 0, 96 )
+
+[node name="pine_tree22" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -46, 0, 29 )
+
+[node name="pine_tree23" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -57, 0, 48 )
+
+[node name="pine_tree24" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -49, 0, 75 )
+
+[node name="pine_tree25" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -68, 0, 68 )
+
+[node name="pine_tree26" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -82, 0, 53 )
+
+[node name="pine_tree27" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -46, 0, 92 )
+
+[node name="pine_tree28" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -77, 0, 92 )
+
+[node name="pine_tree29" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -70, 0, 115 )
+
+[node name="pine_tree30" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -46, 0, 117 )
+
+[node name="pine_tree31" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -21, 0, 122 )
+
+[node name="pine_tree32" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 9, 0, 115 )
+
+[node name="pine_tree33" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -92, 0, 35 )
+
+[node name="pine_tree34" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -72, 0, 19 )
+
+[node name="pine_tree35" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -52, 0, 11 )
+
+[node name="pine_tree36" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -36, 0, 7 )
+
+[node name="pine_tree37" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -60, 0, -7 )
+
+[node name="pine_tree38" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -75, 0, 1 )
+
+[node name="pine_tree39" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -88, 0, -28 )
+
+[node name="pine_tree40" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -66, 0, -35 )
+
+[node name="pine_tree41" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -89, 0, -80 )
+
+[node name="pine_tree42" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -110, 0, -76 )
+
+[node name="pine_tree43" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 55, 0, -47 )
+
+[node name="pine_tree47" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 64, 0, -71 )
+
+[node name="pine_tree48" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 90, 0, -52 )
+
+[node name="pine_tree49" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 73, 0, -54 )
+
+[node name="pine_tree50" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 89, 0, -88 )
+
+[node name="pine_tree51" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 66, 0, -109 )
+
+[node name="pine_tree52" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 120, 0, -79 )
+
+[node name="pine_tree44" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 18, 0, -46 )
+
+[node name="pine_tree45" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 3, 0, -54 )
+
+[node name="pine_tree46" parent="forest" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -46, 0, -16 )
+
+[node name="nature" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 26 )
+volume_db = 3.0
+
+[node name="endLayer" type="CanvasLayer" parent="."]
+
+[node name="end" type="Control" parent="endLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="fadeOutEnd" type="AnimationPlayer" parent="endLayer/end"]
+anims/fadeOut = SubResource( 32 )
+
+[node name="fadeOutColor" type="ColorRect" parent="endLayer/end"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="endText" type="Label" parent="endLayer/end"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_right = -20.0
+custom_fonts/font = SubResource( 33 )
+text = "With the city now leveled and returned to nature, Matthew escaped to a Canadian commune to smoke weed and never be heard from again."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="subs2" type="CanvasLayer" parent="."]
+
+[node name="sub_control" type="Control" parent="subs2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="subtitles" type="Label" parent="subs2/sub_control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+margin_right = -15.0
+margin_bottom = -15.0
+text = "Holy fuck, it's raining pigs."
+align = 1
+valign = 2
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="main_men_anim" type="AnimationPlayer" parent="subs2"]
+anims/pigsRaining = SubResource( 35 )
+anims/start = SubResource( 36 )
+
+[node name="voiceover" type="AudioStreamPlayer" parent="subs2/main_men_anim"]
+stream = ExtResource( 29 )
+volume_db = 10.0
+
+[connection signal="pressed" from="main_menu_camera/main_menu/main_menu_control/start_button" to="." method="_on_start_button_pressed"]
+[connection signal="value_changed" from="main_menu_camera/main_menu/main_menu_control/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="main_menu_camera/main_menu/main_menu_control/HSlider2" to="." method="_on_HSlider2_value_changed"]
+[connection signal="toggled" from="main_menu_camera/main_menu/main_menu_control/CheckBox" to="." method="_on_CheckBox_toggled"]
+[connection signal="animation_finished" from="main_menu_camera/subs/main_men_anim" to="." method="_on_main_men_anim_animation_finished"]
+[connection signal="animation_finished" from="pivot/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="endLayer/end/fadeOutEnd" to="." method="_on_fadeOutEnd_animation_finished"]

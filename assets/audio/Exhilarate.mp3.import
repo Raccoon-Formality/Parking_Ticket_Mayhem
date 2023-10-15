@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Exhilarate.mp3-6f60ed5765f6526eeb821caa0a061309.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Exhilarate.mp3"
+dest_files=[ "res://.import/Exhilarate.mp3-6f60ed5765f6526eeb821caa0a061309.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

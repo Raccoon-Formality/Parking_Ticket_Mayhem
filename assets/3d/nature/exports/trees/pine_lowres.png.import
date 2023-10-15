@@ -1,0 +1,37 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/pine_lowres.png-a6ec3663084cd390f0e3bcf31e6a9c0d.s3tc.stex"
+path.etc2="res://.import/pine_lowres.png-a6ec3663084cd390f0e3bcf31e6a9c0d.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://assets/3d/nature/exports/trees/pine_lowres.png"
+dest_files=[ "res://.import/pine_lowres.png-a6ec3663084cd390f0e3bcf31e6a9c0d.s3tc.stex", "res://.import/pine_lowres.png-a6ec3663084cd390f0e3bcf31e6a9c0d.etc2.stex" ]
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=true
+flags/filter=false
+flags/mipmaps=true
+flags/anisotropic=false
+flags/srgb=1
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/3d/psx_cars/Car 05/Car5.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://parking_ticket.png" type="Texture" id=2]
+[ext_resource path="res://assets/3d/psx_cars/Car 05/car5_green.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/Helvetica.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 1, 1, 3 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 50
+font_data = ExtResource( 4 )
+
+[node name="my_car" type="Spatial"]
+
+[node name="static_my_car" type="StaticBody" parent="." groups=["playerCar"]]
+
+[node name="Car5" type="MeshInstance" parent="static_my_car"]
+mesh = ExtResource( 1 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="static_my_car"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.917072, 0 )
+shape = SubResource( 4 )
+
+[node name="Sprite3D" type="Sprite3D" parent="static_my_car"]
+transform = Transform( 0.149222, 0.00866242, -0.083734, 0.00273755, 0.106276, 0.705467, 0.01501, -0.1055, 0.703779, -0.799948, 1.46154, 1.24106 )
+texture = ExtResource( 2 )
+
+[node name="Label3D" type="Label3D" parent="static_my_car"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124521, 2.13159, 0.326562 )
+visible = false
+billboard = 2
+no_depth_test = true
+text = "click on me to end it all"
+font = SubResource( 6 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Car_Engine_Loop_2.ogg-a9c44cdd3f819111e9adda66db37740f.oggstr"
+
+[deps]
+
+source_file="res://assets/3d/psx_cars/Sound effects/Car_Engine_Loop_2.ogg"
+dest_files=[ "res://.import/Car_Engine_Loop_2.ogg-a9c44cdd3f819111e9adda66db37740f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

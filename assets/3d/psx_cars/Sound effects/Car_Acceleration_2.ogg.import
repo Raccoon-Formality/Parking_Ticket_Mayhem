@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Car_Acceleration_2.ogg-762c67d2bfd132d37e4bb736dc86f639.oggstr"
+
+[deps]
+
+source_file="res://assets/3d/psx_cars/Sound effects/Car_Acceleration_2.ogg"
+dest_files=[ "res://.import/Car_Acceleration_2.ogg-762c67d2bfd132d37e4bb736dc86f639.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

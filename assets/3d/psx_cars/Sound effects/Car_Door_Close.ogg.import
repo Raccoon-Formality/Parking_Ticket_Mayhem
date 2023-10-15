@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Car_Door_Close.ogg-4e8e42c7a4b32d726090edeea4d94199.oggstr"
+
+[deps]
+
+source_file="res://assets/3d/psx_cars/Sound effects/Car_Door_Close.ogg"
+dest_files=[ "res://.import/Car_Door_Close.ogg-4e8e42c7a4b32d726090edeea4d94199.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

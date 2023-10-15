@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/robotVoice.mp3-188ea0dafad06dc0684d59ae1989005b.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/robotVoice.mp3"
+dest_files=[ "res://.import/robotVoice.mp3-188ea0dafad06dc0684d59ae1989005b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
