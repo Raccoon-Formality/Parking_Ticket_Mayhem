@@ -8,14 +8,16 @@ This code is not my finest work, but I am putting it under the MIT license and o
 All of the code I wrote for this project, including all GDscript files are under the MIT license, for more information check the LICENSE.md file. I used some free assets in this project and then follow their own license, listed here:
 
 Assets used:
-https://nartier.itch.io/ps1-style-industrial-buildings
-https://nartier.itch.io/ps1-style-nature-assets
-https://ggbot.itch.io/psx-style-cars
-https://opengameart.org/content/512-sound-effects-8-bit-style
-https://opengameart.org/content/50-cc0-retro-synth-sfx
-https://freesound.org/ 
+
+- https://nartier.itch.io/ps1-style-industrial-buildings
+- https://nartier.itch.io/ps1-style-nature-assets
+- https://ggbot.itch.io/psx-style-cars
+- https://opengameart.org/content/512-sound-effects-8-bit-style
+- https://opengameart.org/content/50-cc0-retro-synth-sfx
+- https://freesound.org/ 
 
 Music:
+
 Exhilarate Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 3.0 License
 http://creativecommons.org/licenses/by/3.0/
