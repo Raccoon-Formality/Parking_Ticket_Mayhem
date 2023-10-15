@@ -5,6 +5,8 @@ Link to itch.io page: https://raccoon-formality.itch.io/parking-ticket-mayhem
 
 This code is not my finest work, but I am putting it under the MIT license and open sourcing it in case you were interested in looking under the hood into how it's made. Maybe there is something to learn from the way I made objects interactable.
 
+Project was made in Godot 3.5.2 for most compatability, but by doing so it probably won't work in Godot 4.
+
 All of the code I wrote for this project, including all GDscript files are under the MIT license, for more information check the LICENSE.md file. I used some free assets in this project and then follow their own license, listed here:
 
 Assets used:
